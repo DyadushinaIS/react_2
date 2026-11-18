@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import Post from './Post';
 
 class Blog extends React.Component
@@ -8,15 +8,17 @@ class Blog extends React.Component
         return (
             <>
                 {
-                    props.post.map
+                    this.props.posts.map
+                    (
+                        post =>
                         (
-                            post =>
-                            (
-                                <Post   title={props.title}
-                                        content={props.content}
-                                />
-                            )
+                            <Post   key={post.id}
+                                    title={post.title}
+                                    content={post.content}
+                                    removePost={this.props.removePost }
+                            />
                         )
+                    )
                 }
             </>
         )

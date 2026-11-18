@@ -1,3 +1,4 @@
+п»їimport React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header.js';
@@ -6,24 +7,35 @@ import Form from './components/Form';
 import Range from './components/Range';
 import Blog from './components/Blog.js';
 
-function App()
+
+class App extends React.Component
 {
-    let posts =
+    state =
+    {
+        posts:
         [
-            { id: '1', title: "Погода", content: "Летят две стаи напильников, одна на север, другая на восток" },
-            { id: '2', title: "О ценах", content: "Сколько стоит килограмм гвоздей, если пика козырь" },
-            { id: '3', title: "О людях", content: "Вам 27 лет" }
-        ];
+            { id: '1', title: "РџРѕРіРѕРґР°", content: "Р›РµС‚СЏС‚ РґРІРµ СЃС‚Р°Рё РЅР°РїРёР»СЊРЅРёРєРѕРІ, РѕРґРЅР° РЅР° СЃРµРІРµСЂ, РґСЂСѓРіР°СЏ РЅР° РІРѕСЃС‚РѕРє" },
+            { id: '2', title: "Рћ С†РµРЅР°С…", content: "РЎРєРѕР»СЊРєРѕ СЃС‚РѕРёС‚ РєРёР»РѕРіСЂР°РјРј РіРІРѕР·РґРµР№, РµСЃР»Рё РїРёРєР° РєРѕР·С‹СЂСЊ" },
+            { id: '3', title: "Рћ Р»СЋРґСЏС…", content: "Р’Р°Рј 27 Р»РµС‚" }
+        ]
+    }
 
-    return (
-    <div className="App">
-          <Header />
-          <Hello />         <hr/>
-          <Form/>           <hr />
-          <Range/>          <hr />
-          <Blog/>          <hr />
-    </div>
-  );
+    removePost = (id) =>
+    {
+        this.setState({posts:this.state.posts.filter(post=>post.id!==id)})
+    }
+
+    render()
+    {
+        return (
+            <div className="App">
+                <Header />
+                <Hello />       <hr />
+                <Form />         <hr />
+                <Range />        <hr />
+                <Blog posts={this.state.posts} removePost={this.removePost} />         <hr />
+            </div>
+        );
+    }
 }
-
 export default App;
