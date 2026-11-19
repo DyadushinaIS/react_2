@@ -13,6 +13,7 @@ class Blog extends React.Component
                         post =>
                         (
                             <Post   key={post.id}
+                                    id={post.id}
                                     title={post.title}
                                     content={post.content}
                                     removePost={this.props.removePost }

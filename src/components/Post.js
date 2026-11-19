@@ -8,7 +8,7 @@ class Post extends React.Component
 			<fieldset >
 				<legend style={{ fontWeight: "bold" }}>{this.props.title} </legend>
 				<p>{this.props.content}</p>
-				<button>Delete</button>
+				<button onClick={()=>this.props.removePost(this.props.id) }>Delete</button>
 			</fieldset>
 		)
 	}
